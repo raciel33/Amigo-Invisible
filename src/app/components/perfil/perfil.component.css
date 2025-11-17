@@ -1,0 +1,16 @@
+p {
+    font-family: cursive;
+}
+
+.card-body {
+    min-height: 400px;
+}
+
+.loading {
+    color: white;
+    padding-top: 50px;
+}
+
+span {
+    font-family: cursive;
+}

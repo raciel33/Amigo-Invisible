@@ -1,0 +1,58 @@
+<section>
+
+    <div class="mt-5 text-center">
+        <h1 class="animate__animated animate__bounce display-1">Hola {{ user.nombre}}!</h1>
+    </div>
+
+</section>
+<hr>
+<section>
+    <div class="row mt-3">
+        <div class="col-6 mt-lg-5" *ngIf="!user.ya_elegi">
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <button class="btn btn-primary btn-lg" type="button" [disabled]="disable" [ngStyle]="{'background-color': disable ? 'gray' : 'btn-primary', 'cursor': disable ? 'not-allowed' : 'pointer'}" (click)="jugar()">Jugar</button>
+            </div>
+
+            <div class="spinner-grow text-primary ngif" *ngIf="cargando == true" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+
+            <div class="text-center mt-5" *ngIf="asignado">
+                <p class="display-4"> Te toca: </p>
+
+                <p class="text-center text-warning display-2">{{ asignado.nombre }}</p>
+
+
+            </div>
+
+
+        </div>
+
+        <div class="col-6 mt-lg-5" *ngIf="user.ya_elegi">
+            <p class="fs-3 text-center">Ya has elegido...</p>
+
+        </div>
+        <div class="col-4">
+            <h3 class="text-center">Participantes:</h3>
+
+            <hr>
+            <p class="text-center text-info fs-4">Antonio</p>
+            <p class="text-center text-info fs-4">Sara</p>
+            <p class="text-center text-info fs-4">Sendy</p>
+            <p class="text-center text-info fs-4">Raciel</p>
+            <p class="text-center text-info fs-4">Ray</p>
+            <p class="text-center text-info fs-4">Marisa</p>
+            <p class="text-center text-info fs-4">Rober</p>
+            <p class="text-center text-info fs-4">Diana</p>
+            <p class="text-center text-info fs-4">Viviana</p>
+            <p class="text-center text-info fs-4">Arian</p>
+            <p class="text-center text-info fs-4">Fran</p>
+            <p class="text-center text-info fs-4">Javi</p>
+
+
+        </div>
+    </div>
+
+
+
+</section>

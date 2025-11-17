@@ -1,0 +1,103 @@
+<div id="padre" class="mt-5">
+    <h1 class="text-center">Si no juegas no cenas!</h1>
+    <hr>
+    <div class="row mt-3">
+        <div class="col-sm-6 mb-3 mb-sm-0 animate__animated animate__backInUp">
+
+            <form *ngIf="showRegister" id="formulario" class="p-3" #loginForm="ngForm" (ngSubmit)="login(loginForm.value)" style="border: 2px solid rgb(233, 151, 151);border-radius: 5%; ">
+                <p class="display-2 text-center"> Iniciar sesion</p>
+                <div class="form-group">
+                    <label for="signin-email">Email</label>
+                    <input type="email" class="form-control" placeholder="Correo electrínico" name="email" [(ngModel)]="user.email" required>
+                </div>
+                <div class="form-group">
+                    <label for="signin-password" class="form-label">Password</label>
+                    <div class="cs-password-toggle input-group">
+                        <input type="password" class="form-control appended-form-control" id="signin-password" placeholder="Your password" [type]="show ? 'text': 'password'" name="password" [(ngModel)]="user.password" required>
+
+                        <span class="input-group-text" *ngIf="!show">
+                         <img (click)="showPassword()" src="../../../../../assets/icon/hide.png" width="20px" height="20px">
+                      </span> <span class="input-group-text" *ngIf="show">
+                        <img (click)="showPassword()" src="../../../../../assets/icon/eye.png" width="20px" height="20px">
+                     </span>
+
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block mt-3">Iniciar sesión</button>
+                <p class="font-size-sm pt-4 mb-0">
+                    No tienes una cuenta?
+                    <a href="#" class="font-weight-bold text-decoration-none">Registrate</a>
+                </p>
+            </form>
+
+
+            <form [formGroup]="registerForm" (ngSubmit)="regisro_Usuario()" *ngIf="!showRegister" class="needs-validation mt-3 p-3" novalidate style="border: 2px solid rgb(233, 151, 151);border-radius: 5%; ">
+                <p class="text-center display-3">Registráte</p>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="validationTooltip01" class="form-label">Nombre</label>
+                        <input class="form-control" type="text" formControlName="nombre" placeholder="Nombre" name="nombre" value="" required>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label for="validationTooltipUsername" class="form-label">Email</label>
+                        <input class="form-control" type="text" formControlName="email" name="email" placeholder="Email" required>
+                        <div class="invalid-tooltip">Please choose a username.</div>
+                    </div>
+                </div>
+
+
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="validationCustom01" class="form-label">Password</label>
+                        <div class="input-group">
+                            <input class="form-control" [type]="show ? 'text': 'password'" formControlName="password" name="password" placeholder="Password">
+                            <span class="input-group-text" *ngIf="!show">
+                         <img (click)="showPassword()" src="../../../../../assets/icon/hide.png" width="20px" height="20px">
+                      </span>
+                            <span class="input-group-text" *ngIf="show">
+                        <img (click)="showPassword()" src="../../../../../assets/icon/eye.png" width="20px" height="20px">
+                     </span>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="validationCustom01" class="form-label">Confirmar Password</label>
+                        <div class="input-group">
+
+                            <input class="form-control" [type]="show ? 'text': 'password'" placeholder="Confirm Password" formControlName="password2">
+                            <span class="input-group-text" *ngIf="!show">
+                                  <img (click)="showPassword()" src="../../../../../assets/icon/hide.png" width="20px" height="20px">
+                                </span>
+                            <span class="input-group-text" *ngIf="show">
+                                  <img (click)="showPassword()" src="../../../../../assets/icon/eye.png" width="20px" height="20px">
+                                </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!--manejo de validacion del formulario-->
+                <div class="row">
+                    <div class="col text-danger">
+                        <p *ngIf="contrasenyasNoValidas()">Las contraseñas deben de ser iguales</p>
+
+                        <p *ngIf="campoNoValido('nombre')">El nombre es obligatorio</p>
+
+                        <p *ngIf="campoNoValido('email')">El email es obligatorio y tiene que ser valido</p>
+
+                    </div>
+
+                </div>
+
+                <button class="btn btn-primary mt-2" type="submit">Registrarse</button>
+                <p class="font-size-sm pt-4 mb-0">
+                    Tienes una cuenta?
+                    <a class="btn btn-outline-primary" style="cursor: pointer;" (click)="show_Registro()" class="font-weight-bold text-decoration-none">Inicia session</a>
+                </p>
+            </form>
+        </div>
+
+    </div>
+</div>
