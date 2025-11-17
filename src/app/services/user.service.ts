@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { GLOBAL } from './GLOBAL';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class UserService {
   public user : any;
 
   constructor( private _http: HttpClient) {
-    this.url = GLOBAL.url
+    this.url = environment.SERVER_URL
  }
  //para extraer los headers(token)
 get headers(){
