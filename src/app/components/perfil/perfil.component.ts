@@ -40,7 +40,7 @@ listarParticipantes(){
   this._userService.listarParticipantes( this.id ).subscribe(
     (resp: any) => {
       this.participantes = resp.participantes
-      //console.log(this.participantes);
+     // console.log(this.participantes.length);
     }
   )
 }
